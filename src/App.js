@@ -271,7 +271,7 @@ const App = () => {
                         </a>
                     </div>
 
-                    <div className="process__column">
+                    <div className="process__column process__column--text-center">
                         <img
                             src={whatCanYouBuild}
                             alt="What can you build"
@@ -281,7 +281,7 @@ const App = () => {
                 </section>
 
                 <section className="help-you">
-                    <div>
+                    <div className="help-you__column help-you__column--text-center">
                         <img
                             src={hereToAlwaysHelpYou}
                             alt="We are here to always help you"
@@ -289,7 +289,7 @@ const App = () => {
                         />
                     </div>
 
-                    <div>
+                    <div className="help-you__column help-you__column--center">
                         <h2 className="help-you__title text-red">
                             We are here to <strong>always help you</strong>
                         </h2>

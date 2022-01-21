@@ -67,8 +67,12 @@ ul {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 80px;
+        min-height: rem(80);
         padding: rem(20) rem(16);
+
+        @include breakpoint($lg) {
+            padding: rem(38) rem(48);
+        }
     }
 
     &--mobile {
@@ -77,7 +81,7 @@ ul {
         left: 0;
         display: flex;
         flex-direction: column;
-        padding: rem(16) rem(40);
+        padding: rem(16) rem(68);
         background-color: white;
     }
 
@@ -113,15 +117,24 @@ ul {
 }
 
 .logo {
-    max-width: 100%;
-    height: auto;
+    max-width: rem(331);
+    max-height: rem(28);
+    height: 28px;
     width: 15rem;
+
+    @include breakpoint($lg) {
+        width: 100%;
+    }
 
     &--immersity {
         max-width: rem(257);
         max-height: rem(204);
         width: rem(128);
         object-fit: contain;
+
+        @include breakpoint($lg) {
+            width: rem(154.391);
+        }
     }
 
     &--wifipass {
@@ -129,6 +142,10 @@ ul {
         max-height: rem(161);
         width: rem(128);
         object-fit: contain;
+
+        @include breakpoint($lg) {
+            width: rem(208);
+        }
     }
 
     &--kinesis {
@@ -136,6 +153,10 @@ ul {
         max-height: rem(156);
         width: rem(128);
         object-fit: contain;
+
+        @include breakpoint($lg) {
+            width: rem(142.391);
+        }
     }
 
     &--mexperiencia {
@@ -143,6 +164,10 @@ ul {
         max-height: rem(163);
         width: rem(128);
         object-fit: contain;
+
+        @include breakpoint($lg) {
+            width: rem(170.391);
+        }
     }
 
     &--mobile {
@@ -150,6 +175,10 @@ ul {
         max-height: rem(182);
         width: rem(48);
         object-fit: contain;
+
+        @include breakpoint($lg) {
+            width: rem(64);
+        }
     }
 
     &--goodtimes {
@@ -157,6 +186,10 @@ ul {
         max-height: rem(107);
         width: rem(128);
         object-fit: contain;
+
+        @include breakpoint($lg) {
+            width: rem(224);
+        }
     }
 }
 
@@ -228,6 +261,7 @@ ul {
     padding: rem(32) rem(32) rem(80);
 
     &__title {
+        max-width: 26rem;
         margin-top: rem(32);
         text-transform: capitalize;
         font-weight: 600;
@@ -237,11 +271,12 @@ ul {
 
         @include breakpoint($md) {
             font-size: rem(42.88);
-            line-height: rem(74);
         }
 
         @include breakpoint($lg) {
+            max-width: 35rem;
             font-size: rem(59);
+            line-height: rem(74);
         }
     }
 
@@ -254,6 +289,10 @@ ul {
 
         @include breakpoint($md) {
             width: 20rem;
+        }
+
+        @include breakpoint($lg) {
+            width: 25rem;
         }
     }
 
@@ -327,23 +366,40 @@ ul {
     display: grid;
     padding: rem(32) rem(32) rem(80);
 
+    @include breakpoint($md) {
+        grid-gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+
     &__column {
         &--order1 {
             order: 1;
+
+            @include breakpoint($md) {
+                order: initial;
+            }
+        }
+
+        &--text-center {
+            text-align: center;
         }
     }
 
     &__title {
-        padding-right: rem(64);
+        max-width: 15rem;
         font-size: rem(28);
         line-height: initial;
 
-        @include breakpoint($md) {
+        @include breakpoint($lg) {
+            max-width: 13ch;
+            font-size: rem(43);
             line-height: rem(55);
         }
     }
 
     &__subheading {
+        max-width: 25rem;
         margin-top: rem(41);
         font-family: "Poppins";
         font-size: rem(14.56);
@@ -354,29 +410,30 @@ ul {
             font-weight: 500;
         }
 
-        @include breakpoint($sm) {
-            font-size: rem(15);
-        }
-
         @include breakpoint($md) {
             font-size: rem(14);
+        }
 
-            & > div:first-child {
-                order: 0;
-            }
+        @include breakpoint($lg) {
+            font-size: rem(15);
         }
     }
 
     &__image {
         max-width: rem(634);
         max-height: rem(546);
-        width: 100%;
+        width: 18rem;
         height: auto;
         margin-bottom: rem(32);
         object-fit: contain;
 
+        @include breakpoint($sm) {
+            width: 25rem;
+        }
+
         @include breakpoint($md) {
-            margin-top: 0;
+            width: 100%;
+            margin-bottom: 0;
         }
     }
 
@@ -413,8 +470,24 @@ ul {
     display: grid;
     padding: rem(32) rem(32) rem(80);
 
+    @include breakpoint($md) {
+        grid-gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+
+    &__column {
+        &--text-center {
+            text-align: center;
+        }
+
+        &--center {
+            margin: auto;
+        }
+    }
+
     &__title {
-        padding-right: rem(64);
+        max-width: 15rem;
         font-size: rem(28);
         line-height: initial;
 
@@ -422,12 +495,15 @@ ul {
             font-weight: 600;
         }
 
-        @include breakpoint($md) {
+        @include breakpoint($lg) {
+            max-width: 13ch;
+            font-size: rem(43);
             line-height: rem(55);
         }
     }
 
     &__subheading {
+        max-width: 25rem;
         margin-top: rem(36);
         padding-bottom: rem(10);
         font-family: "Poppins";
@@ -435,18 +511,29 @@ ul {
         font-size: rem(14.56);
         line-height: rem(27);
         color: #555555;
+
+        @include breakpoint($md) {
+            font-size: rem(14);
+        }
+
+        @include breakpoint($lg) {
+            font-size: rem(15);
+        }
     }
 
     &__image {
         max-width: rem(678);
         max-height: rem(602);
-        width: 100%;
+        width: 18rem;
         height: 100%;
         object-fit: contain;
 
         @include breakpoint($md) {
             width: 20rem;
-            object-fit: cover;
+        }
+
+        @include breakpoint($lg) {
+            width: 100%;
         }
     }
 }
@@ -481,16 +568,32 @@ ul {
     }
 
     &__content {
-        margin-top: rem(40.5);
+        margin-top: rem(141);
     }
 
     &__grid {
         display: grid;
         grid-gap: 1rem;
 
+        @include breakpoint($md) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include breakpoint($lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
         & > li {
             height: 100%;
             width: 100%;
+
+            @include breakpoint($lg) {
+                &:nth-child(3n + 2) {
+                    & > .card {
+                        margin-top: -3rem;
+                    }
+                }
+            }
         }
     }
 
@@ -508,7 +611,7 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: rem(386);
+    max-width: 100%;
     max-height: rem(255);
     height: rem(255);
     padding: rem(33);
@@ -516,8 +619,21 @@ ul {
     background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 10px 30px #99999933;
 
-    @include breakpoint($sm) {
+    // @include breakpoint($sm) {
+    //     max-height: rem(338);
+    //     height: 100%;
+    // }
+
+    @include breakpoint($lg) {
+        max-width: rem(386);
         max-height: rem(338);
-        height: 255px;
+        height: 100%;
+    }
+
+    & > img {
+        flex: 1;
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
     }
 }
