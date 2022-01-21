@@ -78,14 +78,24 @@ const App = () => {
                         <img src={logo} alt="Shokworks" className="logo" />
 
                         <nav className="nav nav--desktop">
-                            <a href="#" className="active">
+                            <a href="#" className="nav__link nav__link--active">
                                 Home
                             </a>
-                            <a href="#">About</a>
-                            <a href="#">Portfolio</a>
-                            <a href="#">Product</a>
-                            <a href="#">Career</a>
-                            <a href="#">Blog</a>
+                            <a href="#" className="nav__link">
+                                About
+                            </a>
+                            <a href="#" className="nav__link">
+                                Portfolio
+                            </a>
+                            <a href="#" className="nav__link">
+                                Product
+                            </a>
+                            <a href="#" className="nav__link">
+                                Career
+                            </a>
+                            <a href="#" className="nav__link">
+                                Blog
+                            </a>
                         </nav>
 
                         <button
