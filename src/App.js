@@ -428,8 +428,8 @@ const App = () => {
                     </div>
                 </section>
 
-                <section className="testimonials">
-                    <h2>What Our Client Says?</h2>
+                <section className="testimonial">
+                    <h2 class="testimonial__title">What Our Client Says?</h2>
                 </section>
 
                 <section className="contactus">
