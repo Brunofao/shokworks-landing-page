@@ -55,7 +55,7 @@ const MobileNavbar = () => {
                 Blog
             </a>
 
-            <div className="search">
+            <div className="search search--mobile">
                 <div className="search__input">
                     <input type="text" placeholder="Search Here" />
 
@@ -121,18 +121,18 @@ const App = () => {
         if (swiper) swiper.slideTo(3);
     }, [swiper]);
 
-    // useEffect(() => {
-    //     async function getNews() {
-    //         fetch(
-    //             `https://newsapi.org/v2/everything?q=Apple&from=2022-01-22&sortBy=popularity&apiKey=${API_KEY}`
-    //         )
-    //             .then((response) => response.json())
-    //             .then(({ articles }) => setNews(articles));
-    //     }
+    useEffect(() => {
+        async function getNews() {
+            fetch(
+                `https://newsapi.org/v2/everything?q=Apple&from=2022-01-22&sortBy=popularity&apiKey=${API_KEY}`
+            )
+                .then((response) => response.json())
+                .then(({ articles }) => setNews(articles));
+        }
 
-    //     getNews();
-    //     console.log(news);
-    // }, []);
+        getNews();
+        console.log(news);
+    }, []);
 
     useEffect(() => {
         async function getClientsTestimonials() {
@@ -176,6 +176,28 @@ const App = () => {
                                 Blog
                             </a>
                         </nav>
+
+                        <div className="search">
+                            <div className="search__input">
+                                <input type="text" placeholder="Search Here" />
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="21"
+                                    height="21"
+                                    viewBox="0 0 21 21"
+                                >
+                                    <path
+                                        d="M21,20.076l-6.542-6.542A8.217,8.217,0,0,0,2.406,2.379a8.217,8.217,0,0,0,11.157,12.05l6.542,6.542ZM8.221,15.149a6.956,6.956,0,1,1,6.956-6.956A6.964,6.964,0,0,1,8.221,15.149Z"
+                                        transform="translate(0 0.028)"
+                                    />
+                                </svg>
+                            </div>
+
+                            <a href="#" className="contact">
+                                Contact us
+                            </a>
+                        </div>
 
                         <button
                             type="button"
@@ -655,9 +677,17 @@ const App = () => {
                                         />
 
                                         <div className="testimonial__card__comment">
-                                            <img src={quotes} alt="Quote left" className="testimonial__quote" />
+                                            <img
+                                                src={quotes}
+                                                alt="Quote left"
+                                                className="testimonial__quote"
+                                            />
                                             <p>{body}</p>
-                                            <img src={quotes} alt="Quote right" className="testimonial__quote testimonial__quote--right" />
+                                            <img
+                                                src={quotes}
+                                                alt="Quote right"
+                                                className="testimonial__quote testimonial__quote--right"
+                                            />
                                         </div>
 
                                         <div className="testimonial__card__name">

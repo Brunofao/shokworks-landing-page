@@ -77,6 +77,10 @@ ul {
         @include breakpoint($xl) {
             padding: rem(36) rem(60);
         }
+
+        @include breakpoint($xxl) {
+            justify-content: initial;
+        }
     }
 
     &--mobile {
@@ -103,12 +107,16 @@ ul {
         @include breakpoint($xl) {
             display: flex;
         }
+
+        @include breakpoint($xxl) {
+            margin-left: rem(161.52);
+        }
     }
 
     &__link {
         position: relative;
         margin-bottom: rem(16);
-        font-size: rem(17);
+        font-size: rem(14);
         line-height: rem(26);
         color: #555555;
         text-decoration: none;
@@ -116,6 +124,14 @@ ul {
         @include breakpoint($xl) {
             margin-bottom: 0;
             margin-left: rem(21);
+        }
+
+        @include breakpoint($xxl) {
+            font-size: rem(17);
+
+            &:first-child {
+                margin-left: 0;
+            }
         }
 
         &--active {
@@ -151,7 +167,7 @@ ul {
     height: 28px;
     width: 15rem;
 
-    @include breakpoint($lg) {
+    @include breakpoint($xxl) {
         width: 100%;
     }
 
@@ -247,10 +263,24 @@ ul {
 }
 
 .search {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
+    // flex-grow: 1;
+
+    @include breakpoint($xl) {
+        display: flex;
+        flex-direction: row;
+        margin-left: rem(21);
+    }
+
+    @include breakpoint($xxl) {
+        margin-left: rem(42);
+    }
+
+    &--mobile {
+        display: flex;
+    }
 
     &__input {
         display: flex;
@@ -294,6 +324,15 @@ ul {
     text-decoration: none;
     background: transparent linear-gradient(248deg, #1b92c8 0%, #2c3636 100%) 0%
         0% no-repeat;
+        
+    @include breakpoint($xl) {
+        margin-top: 0;
+        margin-left: rem(21);
+    }
+
+    @include breakpoint($xxl) {
+        margin-left: rem(42);
+    }
 }
 
 .button {
