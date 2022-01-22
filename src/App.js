@@ -123,29 +123,17 @@ const App = () => {
     }, [swiper]);
 
     useEffect(() => {
-        async function getNews() {
-            fetch(
-                `https://newsapi.org/v2/everything?q=Apple&from=2022-01-22&sortBy=popularity&apiKey=${API_KEY}`
-            )
-                .then((response) => response.json())
-                .then(({ articles }) => setNews(articles));
-        }
-
-        getNews();
-        console.log(news);
+        fetch(
+            `https://newsapi.org/v2/everything?q=Apple&from=2022-01-22&sortBy=popularity&apiKey=${API_KEY}`
+        )
+            .then((response) => response.json())
+            .then(({ articles }) => setNews(articles));
     }, []);
 
     useEffect(() => {
-        async function getClientsTestimonials() {
-            fetch(
-                "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5"
-            )
-                .then((response) => response.json())
-                .then((data) => setClients(data));
-        }
-
-        getClientsTestimonials();
-        console.log(clients);
+        fetch("https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5")
+            .then((response) => response.json())
+            .then((data) => setClients(data));
     }, []);
 
     return (
