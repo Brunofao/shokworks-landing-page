@@ -636,6 +636,10 @@ ul {
     padding: rem(32) 0 rem(80);
     text-align: center;
 
+    // @include breakpoint($md) {
+    //     padding: rem(32) rem(32) rem(80);
+    // }
+
     &__title {
         max-width: 16ch;
         margin: 0 auto rem(65);
@@ -661,6 +665,8 @@ ul {
         display: flex;
         flex-direction: column;
         align-items: center;
+        // margin-block: rem(32);
+        // margin-left: rem(32);
         margin: rem(32) 0;
         padding: rem(46);
         border-radius: rem(8);
@@ -806,12 +812,6 @@ ul {
         text-align: center;
         line-height: initial;
 
-        @include breakpoint($sm) {
-        }
-
-        @include breakpoint($md) {
-        }
-
         @include breakpoint($lg) {
             font-size: rem(43);
             line-height: rem(55);
@@ -819,6 +819,45 @@ ul {
 
         & > strong {
             font-weight: 600;
+        }
+    }
+
+    &__quote {
+        position: absolute;
+        top: rem(-12);
+        bottom: 0;
+        left: 0;
+        width: auto;
+        height: rem(12);
+
+        @include breakpoint($sm) {
+            height: initial;
+            top: rem(-40);
+            left: rem(-40);
+        }
+
+        @include breakpoint($md) {
+            top: rem(-12);
+            left: rem(-80);
+        }
+
+        &--right {
+            right: rem(1);
+            bottom: 0;
+            left: initial;
+            transform: scaleX(-1);
+
+            @include breakpoint($sm) {
+                height: initial;
+                top: rem(-40);
+                right: rem(-40);
+            }
+
+            @include breakpoint($md) {
+                top: rem(-12);
+                right: rem(-80);
+                left: initial;
+            }
         }
     }
 
@@ -839,6 +878,7 @@ ul {
         }
 
         &__comment {
+            position: relative;
             max-width: 42ch;
             margin-top: rem(24);
             font-size: rem(18);
@@ -896,16 +936,17 @@ ul {
 .contactus {
     padding: rem(32) rem(32) rem(80);
     font-family: "Montserrat";
-    background: transparent linear-gradient(1deg, #ffffff 0%, #c9e6ff 100%) 0%
-        0% no-repeat;
+    background-color: #eaf6ff;
+    // background: transparent linear-gradient(1deg, #ffffff 0%, #c9e6ff 100%) 0%
+    //     0% no-repeat;
     overflow: hidden;
 
     @include breakpoint($sm) {
-        padding: rem(75) rem(32);
+        padding: rem(80) rem(32);
     }
 
     @include breakpoint($xl) {
-        padding: rem(75) rem(34);
+        padding: rem(80) rem(34);
     }
 
     &__title {
@@ -1037,6 +1078,7 @@ ul {
     align-items: center;
     max-width: 10rem;
     margin: 0 auto;
+    padding-bottom: 2rem;
 
     &__button {
         width: 36px;
@@ -1048,10 +1090,11 @@ ul {
         border-radius: 9999px;
         cursor: pointer;
         background-color: transparent;
+        box-shadow: 0px 10px 30px #99999933;
 
         & > svg {
-            width: rem(18);
-            height: rem(18);
+            width: rem(14);
+            height: rem(14);
             color: black;
         }
     }
@@ -1325,4 +1368,10 @@ ul {
         bottom: rem(-80);
         z-index: -1;
     }
+}
+
+.swiper-slide.swiper-slide-prev.swiper-slide-visible,
+.swiper-slide.swiper-slide-next.swiper-slide-visible {
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1) !important;
+    transition: inherit;
 }

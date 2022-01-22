@@ -11,6 +11,7 @@ import kinesisLogo from "./assets/images/kinesis-logo.png";
 import mexperienciaLogo from "./assets/images/mexperiencia-logo.png";
 import mobileLogo from "./assets/images/mobile-logo.png";
 import goodtimesLogo from "./assets/images/goodtimes-logo.png";
+import quotes from "./assets/images/quote-left.png";
 import rectangulesAndCircles from "./assets/images/rectangules-circles.png";
 import emailSent from "./assets/images/email-sent.png";
 import contactUsBanner from "./assets/images/contact-us-banner.png";
@@ -90,6 +91,8 @@ const App = () => {
     const [swiperTwo, setSwiperTwo] = useState(null);
     const prevRef = useRef(null);
     const nextRef = useRef(null);
+    const prevRef2 = useRef(null);
+    const nextRef2 = useRef(null);
 
     const handleMobileMenu = () => setMobileMenu(!mobileMenu);
 
@@ -118,18 +121,18 @@ const App = () => {
         if (swiper) swiper.slideTo(3);
     }, [swiper]);
 
-    useEffect(() => {
-        async function getNews() {
-            fetch(
-                `https://newsapi.org/v2/everything?q=Apple&from=2022-01-22&sortBy=popularity&apiKey=${API_KEY}`
-            )
-                .then((response) => response.json())
-                .then(({ articles }) => setNews(articles));
-        }
+    // useEffect(() => {
+    //     async function getNews() {
+    //         fetch(
+    //             `https://newsapi.org/v2/everything?q=Apple&from=2022-01-22&sortBy=popularity&apiKey=${API_KEY}`
+    //         )
+    //             .then((response) => response.json())
+    //             .then(({ articles }) => setNews(articles));
+    //     }
 
-        getNews();
-        console.log(news);
-    }, []);
+    //     getNews();
+    //     console.log(news);
+    // }, []);
 
     useEffect(() => {
         async function getClientsTestimonials() {
@@ -402,44 +405,109 @@ const App = () => {
                                 EffectCoverflow,
                             ]}
                             effect="coverflow"
-                            grabCursor
                             centeredSlides
                             spaceBetween={0}
-                            watchSlidesProgress
                             slidesPerView={3}
-                            pagination={{ clickable: true }}
                             coverflowEffect={{
                                 rotate: 0,
                                 stretch: 0,
-                                depth: 90,
+                                depth: 100,
                                 modifier: 1,
                                 slideShadows: false,
+                            }}
+                            breakpoints={{
+                                1536: {
+                                    spaceBetween: 0,
+                                    slidesPerView: 4,
+                                },
+                                1280: {
+                                    spaceBetween: 0,
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    spaceBetween: 0,
+                                    slidesPerView: 3,
+                                },
+                                768: {
+                                    spaceBetween: 0,
+                                    slidesPerView: 2,
+                                },
+                                300: {
+                                    spaceBetween: 0,
+                                    slidesPerView: 1,
+                                },
+                            }}
+                            onInit={(swiper) => {
+                                swiper.params.navigation.prevEl =
+                                    prevRef.current;
+                                swiper.params.navigation.nextEl =
+                                    nextRef.current;
+                                swiper.navigation.init();
+                                swiper.navigation.update();
                             }}
                             onSwiper={(swiper) => setSwiper(swiper)}
                             onSlideChange={() => console.log("slide change")}
                         >
-                            {news.map(({ urlToImage, title, description }, index) => {
-                                return (
-                                    <SwiperSlide key={index}>
-                                        <div className="speciality-of-us__card">
-                                            <img
-                                                src={urlToImage}
-                                                alt="Lorem picsum"
-                                                className="speciality-of-us__card__image"
+                            {news.map(
+                                ({ urlToImage, title, description }, index) => {
+                                    return (
+                                        <SwiperSlide key={index}>
+                                            <div className="speciality-of-us__card">
+                                                <img
+                                                    src={urlToImage}
+                                                    alt="Lorem picsum"
+                                                    className="speciality-of-us__card__image"
+                                                />
+
+                                                <h3 className="speciality-of-us__card__title">
+                                                    {title}
+                                                    {/* <strong>Communication</strong> */}
+                                                </h3>
+
+                                                <p className="speciality-of-us__card__subheading">
+                                                    {description}
+                                                </p>
+                                            </div>
+                                        </SwiperSlide>
+                                    );
+                                }
+                            )}
+
+                            <SwiperFooter>
+                                <div className="arrow">
+                                    <button
+                                        ref={prevRef}
+                                        className="arrow__button"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 17.754 17.754"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                d="M19.047,10.6H3.6l7.419,7.419-.853.853L1.293,10,10.17,1.118l.853.853L3.6,9.392H19.047Z"
+                                                transform="translate(-1.293 -1.118)"
                                             />
+                                        </svg>
+                                    </button>
 
-                                            <h3 className="speciality-of-us__card__title">
-                                                {title}
-                                                {/* <strong>Communication</strong> */}
-                                            </h3>
-
-                                            <p className="speciality-of-us__card__subheading">
-                                                {description}
-                                            </p>
-                                        </div>
-                                    </SwiperSlide>
-                                );
-                            })}
+                                    <button
+                                        ref={nextRef}
+                                        className="arrow__button"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 17.754 17.755"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                d="M18.754,10,9.876,18.873l-.853-.853L16.442,10.6H1V9.393H16.443L9.023,1.971l.853-.853L18.754,10Z"
+                                                transform="translate(-1 -1.118)"
+                                            />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </SwiperFooter>
                         </Swiper>
                     </div>
                 </section>
@@ -568,15 +636,15 @@ const App = () => {
                         spaceBetween={0}
                         slidesPerView={1}
                         onInit={(swiper) => {
-                            swiper.params.navigation.prevEl = prevRef.current;
-                            swiper.params.navigation.nextEl = nextRef.current;
+                            swiper.params.navigation.prevEl = prevRef2.current;
+                            swiper.params.navigation.nextEl = nextRef2.current;
                             swiper.navigation.init();
                             swiper.navigation.update();
                         }}
                         onSwiper={(swiper) => setSwiperTwo(swiper)}
                         onSlideChange={() => console.log("slide change")}
                     >
-                        {clients.map(({ id, body }, index) => {
+                        {clients.map(({ id, body }) => {
                             return (
                                 <SwiperSlide key={id}>
                                     <div className="testimonial__card">
@@ -587,7 +655,9 @@ const App = () => {
                                         />
 
                                         <div className="testimonial__card__comment">
-                                            {body}
+                                            <img src={quotes} alt="Quote left" className="testimonial__quote" />
+                                            <p>{body}</p>
+                                            <img src={quotes} alt="Quote right" className="testimonial__quote testimonial__quote--right" />
                                         </div>
 
                                         <div className="testimonial__card__name">
@@ -654,7 +724,7 @@ const App = () => {
                         <SwiperFooter>
                             <div className="arrow">
                                 <button
-                                    ref={prevRef}
+                                    ref={prevRef2}
                                     className="arrow__button arrow--no-shadow"
                                 >
                                     <svg
@@ -670,7 +740,7 @@ const App = () => {
                                 </button>
 
                                 <button
-                                    ref={nextRef}
+                                    ref={nextRef2}
                                     className="arrow__button arrow--no-shadow"
                                 >
                                     <svg
