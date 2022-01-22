@@ -11,16 +11,23 @@ import kinesisLogo from "./assets/images/kinesis-logo.png";
 import mexperienciaLogo from "./assets/images/mexperiencia-logo.png";
 import mobileLogo from "./assets/images/mobile-logo.png";
 import goodtimesLogo from "./assets/images/goodtimes-logo.png";
+import rectangulesAndCircles from "./assets/images/rectangules-circles.png";
+import emailSent from "./assets/images/email-sent.png";
 import contactUsBanner from "./assets/images/contact-us-banner.png";
 import facebookIcon from "./assets/images/facebook-icon.png";
 import skypeIcon from "./assets/images/skype-icon.png";
 import linkedinIcon from "./assets/images/linkedin-icon.png";
 import instagramIcon from "./assets/images/instagram-icon.png";
+import footerLane from "./assets/images/footer-lane.png";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/pagination";
 import "swiper/scss/scrollbar";
 import "./App.scss";
+
+// Puede estar en un .env
+// Key de https://newsapi.org/
+const API_KEY = "03a558fe13874de2a9c223b3a7f3a0d5";
 
 const MobileNavbar = () => {
     return (
@@ -77,15 +84,65 @@ const SwiperFooter = ({ children }) => children;
 
 const App = () => {
     const [mobileMenu, setMobileMenu] = useState(false);
+    const [news, setNews] = useState([]);
+    const [clients, setClients] = useState([]);
     const [swiper, setSwiper] = useState(null);
     const [swiperTwo, setSwiperTwo] = useState(null);
     const prevRef = useRef(null);
     const nextRef = useRef(null);
+
     const handleMobileMenu = () => setMobileMenu(!mobileMenu);
+
+    const handleForm = (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.currentTarget);
+        let clientSay = {};
+
+        for (let [key, value] of formData.entries()) {
+            clientSay[key] = value;
+        }
+
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(clientSay),
+        };
+
+        fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+            .then((response) => response.json())
+            .then((data) => setClients((prevState) => [...prevState, data]));
+    };
 
     useEffect(() => {
         if (swiper) swiper.slideTo(3);
     }, [swiper]);
+
+    useEffect(() => {
+        async function getNews() {
+            fetch(
+                `https://newsapi.org/v2/everything?q=Apple&from=2022-01-22&sortBy=popularity&apiKey=${API_KEY}`
+            )
+                .then((response) => response.json())
+                .then(({ articles }) => setNews(articles));
+        }
+
+        getNews();
+        console.log(news);
+    }, []);
+
+    useEffect(() => {
+        async function getClientsTestimonials() {
+            fetch(
+                "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5"
+            )
+                .then((response) => response.json())
+                .then((data) => setClients(data));
+        }
+
+        getClientsTestimonials();
+        console.log(clients);
+    }, []);
 
     return (
         <>
@@ -361,119 +418,28 @@ const App = () => {
                             onSwiper={(swiper) => setSwiper(swiper)}
                             onSlideChange={() => console.log("slide change")}
                         >
-                            <SwiperSlide>
-                                <div className="speciality-of-us__card">
-                                    <img
-                                        src="https://picsum.photos/255/255"
-                                        alt="Lorem picsum"
-                                        className="speciality-of-us__card__image"
-                                    />
+                            {news.map(({ urlToImage, title, description }, index) => {
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div className="speciality-of-us__card">
+                                            <img
+                                                src={urlToImage}
+                                                alt="Lorem picsum"
+                                                className="speciality-of-us__card__image"
+                                            />
 
-                                    <h3 className="speciality-of-us__card__title">
-                                        Great <strong>Communication</strong>
-                                    </h3>
+                                            <h3 className="speciality-of-us__card__title">
+                                                {title}
+                                                {/* <strong>Communication</strong> */}
+                                            </h3>
 
-                                    <p className="speciality-of-us__card__subheading">
-                                        We maintain 24/7 communication to cover
-                                        all your need for the project
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <div className="speciality-of-us__card">
-                                    <img
-                                        src="https://picsum.photos/255/255"
-                                        alt="Lorem picsum"
-                                        className="speciality-of-us__card__image"
-                                    />
-
-                                    <h3 className="speciality-of-us__card__title">
-                                        Great <strong>Communication</strong>
-                                    </h3>
-
-                                    <p className="speciality-of-us__card__subheading">
-                                        We maintain 24/7 communication to cover
-                                        all your need for the project
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <div className="speciality-of-us__card">
-                                    <img
-                                        src="https://picsum.photos/255/255"
-                                        alt="Lorem picsum"
-                                        className="speciality-of-us__card__image"
-                                    />
-
-                                    <h3 className="speciality-of-us__card__title">
-                                        Great <strong>Communication</strong>
-                                    </h3>
-
-                                    <p className="speciality-of-us__card__subheading">
-                                        We maintain 24/7 communication to cover
-                                        all your need for the project
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <div className="speciality-of-us__card">
-                                    <img
-                                        src="https://picsum.photos/255/255"
-                                        alt="Lorem picsum"
-                                        className="speciality-of-us__card__image"
-                                    />
-
-                                    <h3 className="speciality-of-us__card__title">
-                                        Great <strong>Communication</strong>
-                                    </h3>
-
-                                    <p className="speciality-of-us__card__subheading">
-                                        We maintain 24/7 communication to cover
-                                        all your need for the project
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <div className="speciality-of-us__card">
-                                    <img
-                                        src="https://picsum.photos/255/255"
-                                        alt="Lorem picsum"
-                                        className="speciality-of-us__card__image"
-                                    />
-
-                                    <h3 className="speciality-of-us__card__title">
-                                        Great <strong>Communication</strong>
-                                    </h3>
-
-                                    <p className="speciality-of-us__card__subheading">
-                                        We maintain 24/7 communication to cover
-                                        all your need for the project
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <div className="speciality-of-us__card">
-                                    <img
-                                        src="https://picsum.photos/255/255"
-                                        alt="Lorem picsum"
-                                        className="speciality-of-us__card__image"
-                                    />
-
-                                    <h3 className="speciality-of-us__card__title">
-                                        Great <strong>Communication</strong>
-                                    </h3>
-
-                                    <p className="speciality-of-us__card__subheading">
-                                        We maintain 24/7 communication to cover
-                                        all your need for the project
-                                    </p>
-                                </div>
-                            </SwiperSlide>
+                                            <p className="speciality-of-us__card__subheading">
+                                                {description}
+                                            </p>
+                                        </div>
+                                    </SwiperSlide>
+                                );
+                            })}
                         </Swiper>
                     </div>
                 </section>
@@ -610,54 +576,81 @@ const App = () => {
                         onSwiper={(swiper) => setSwiperTwo(swiper)}
                         onSlideChange={() => console.log("slide change")}
                     >
-                        <SwiperSlide>
-                            <div className="testimonial__card">
-                                <img
-                                    src="https://picsum.photos/255/255"
-                                    alt="Lorem picsum"
-                                    className="testimonial__card__photo"
-                                />
+                        {clients.map(({ id, body }, index) => {
+                            return (
+                                <SwiperSlide key={id}>
+                                    <div className="testimonial__card">
+                                        <img
+                                            src="https://picsum.photos/255/255"
+                                            alt="Lorem picsum"
+                                            className="testimonial__card__photo"
+                                        />
 
-                                <div className="testimonial__card__comment">
-                                    Shokworks are dedicated and they
-                                    accomplished all my ideas and thoughts for
-                                    my project, excellent guidance.
+                                        <div className="testimonial__card__comment">
+                                            {body}
+                                        </div>
+
+                                        <div className="testimonial__card__name">
+                                            Rubiya Mond De-Patrica
+                                        </div>
+
+                                        <div className="testimonial__card__rank">
+                                            CEO, Zexbay-Fine
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            );
+                        })}
+
+                        {/*
+                            <SwiperSlide>
+                                <div className="testimonial__card">
+                                    <img
+                                        src="https://picsum.photos/255/255"
+                                        alt="Lorem picsum"
+                                        className="testimonial__card__photo"
+                                    />
+
+                                    <div className="testimonial__card__comment">
+                                        Shokworks are dedicated and they
+                                        accomplished all my ideas and thoughts for
+                                        my project, excellent guidance.
+                                    </div>
+
+                                    <div className="testimonial__card__name">
+                                        Rubiya Mond De-Patrica
+                                    </div>
+
+                                    <div className="testimonial__card__rank">
+                                        CEO, Zexbay-Fine
+                                    </div>
                                 </div>
+                            </SwiperSlide>
 
-                                <div className="testimonial__card__name">
-                                    Rubiya Mond De-Patrica
+                            <SwiperSlide>
+                                <div className="testimonial__card">
+                                    <img
+                                        src="https://picsum.photos/255/255"
+                                        alt="Lorem picsum"
+                                        className="testimonial__card__photo"
+                                    />
+
+                                    <div className="testimonial__card__comment">
+                                        Shokworks are dedicated and they
+                                        accomplished all my ideas and thoughts for
+                                        my project, excellent guidance.
+                                    </div>
+
+                                    <div className="testimonial__card__name">
+                                        Rubiya Mond De-Patrica
+                                    </div>
+
+                                    <div className="testimonial__card__rank">
+                                        CEO, Zexbay-Fine
+                                    </div>
                                 </div>
-
-                                <div className="testimonial__card__rank">
-                                    CEO, Zexbay-Fine
-                                </div>
-                            </div>
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                            <div className="testimonial__card">
-                                <img
-                                    src="https://picsum.photos/255/255"
-                                    alt="Lorem picsum"
-                                    className="testimonial__card__photo"
-                                />
-
-                                <div className="testimonial__card__comment">
-                                    Shokworks are dedicated and they
-                                    accomplished all my ideas and thoughts for
-                                    my project, excellent guidance.
-                                </div>
-
-                                <div className="testimonial__card__name">
-                                    Rubiya Mond De-Patrica
-                                </div>
-
-                                <div className="testimonial__card__rank">
-                                    CEO, Zexbay-Fine
-                                </div>
-                            </div>
-                        </SwiperSlide>
-
+                            </SwiperSlide>
+                         */}
                         <SwiperFooter>
                             <div className="arrow">
                                 <button
@@ -699,17 +692,17 @@ const App = () => {
                 <section className="contactus">
                     <h2 className="contactus__title">
                         Facing Problem?
+                        <br />
                         <strong> Lets Get In Touch Now</strong>
                     </h2>
 
                     <div className="contactus__form">
-                        <form method="POST">
+                        <form method="POST" onSubmit={handleForm}>
                             <div className="form">
                                 <div className="form__grid">
                                     <div className="float-label">
                                         <input
                                             type="text"
-                                            name="firstname"
                                             id="firstname"
                                             placeholder="Bruno"
                                             className="float-label__input"
@@ -726,7 +719,6 @@ const App = () => {
                                     <div className="float-label">
                                         <input
                                             type="text"
-                                            name="lastname"
                                             id="lastname"
                                             placeholder="Bruno"
                                             className="float-label__input"
@@ -743,7 +735,6 @@ const App = () => {
                                     <div className="form__grid--full float-label">
                                         <input
                                             type="text"
-                                            name="email"
                                             id="email"
                                             placeholder="brunfao@gmail.com"
                                             className="float-label__input"
@@ -759,13 +750,10 @@ const App = () => {
 
                                     <div className="form__grid--full float-label float-label--select">
                                         <select
-                                            name="selected-opt"
                                             id="selected-opt"
                                             className="float-label__select"
                                         >
-                                            <option value="" selected>
-                                                Select One
-                                            </option>
+                                            <option disabled>Select One</option>
                                         </select>
 
                                         <label
@@ -779,7 +767,7 @@ const App = () => {
 
                                     <div className="form__grid--full float-label float-label--textarea">
                                         <textarea
-                                            name="message"
+                                            name="body"
                                             id="message"
                                             cols="20"
                                             rows="5"
@@ -797,14 +785,20 @@ const App = () => {
                                 </div>
 
                                 <div>
-                                    <a
-                                        href="#"
+                                    <button
+                                        type="submit"
                                         className="brand__knowmore contactus__btn"
                                     >
                                         Our Works
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
+
+                            <img
+                                src={emailSent}
+                                alt="Email sent to us"
+                                className="form__sent"
+                            />
                         </form>
 
                         <div className="contactus__banner">
@@ -813,6 +807,12 @@ const App = () => {
                                 alt="Contact us banner"
                             />
                         </div>
+
+                        <img
+                            src={rectangulesAndCircles}
+                            alt="Rectangules and circles"
+                            className="contactus__rectangules"
+                        />
                     </div>
                 </section>
             </main>
@@ -978,6 +978,12 @@ const App = () => {
                         </div>
                     </div>
                 </nav>
+
+                <img
+                    src={footerLane}
+                    alt="Foot lane"
+                    className="footer__lane"
+                />
             </footer>
         </>
     );
