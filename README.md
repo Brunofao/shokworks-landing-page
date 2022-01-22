@@ -3,10 +3,11 @@
 ##### Se puede mejorar con:
 
 - Componentes reutilizables (títulos, párrafos, containers, etc.)
-- Trabajar los componentes con CSS Modules (no SCSS)
+- Trabajar los componentes con CSS Modules (no SCSS) | Styled Components
 - Se puede hacer con Next.js para mejorar:
 	- SEO
 	- Componentes reutilizables, ejemplo: Image, para optimizar las imágenes
+- Mejorar el nombramiento de clases (se usó BEM pero puede hacerse mejor)
 
 # Getting Started with Create React App
 
