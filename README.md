@@ -10,6 +10,9 @@
 - Mejorar el nombramiento de clases (se usó BEM pero puede hacerse mejor)
 - Mejorar la semántica de HTML, ejemplo: las cards pueden ser un article
 
+------------
+**Bruno Faoro** - brunfao@gmail.com
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
