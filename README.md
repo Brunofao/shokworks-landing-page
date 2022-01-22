@@ -1,3 +1,13 @@
+# Landing page Shokworks
+
+##### Se puede mejorar con:
+
+- Componentes reutilizables (títulos, párrafos, containers, etc.)
+- Trabajar los componentes con CSS Modules (no SCSS)
+- Se puede hacer con Next.js para mejorar:
+	- SEO
+	- Componentes reutilizables, ejemplo: Image, para optimizar las imágenes
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
