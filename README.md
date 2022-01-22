@@ -10,6 +10,11 @@
 - Mejorar el nombramiento de clases (se usó BEM pero puede hacerse mejor)
 - Mejorar la semántica de HTML, ejemplo: las cards pueden ser un article
 
+#### Detalles a tener en cuenta:
+- Las cards de **Speciality Of Us?** se ven un pocos fuera del diseño con respecto a las imágenes que recibo desde el API
+- La card de **Client Says?**, faltó cuando le das clic vas a ese testimonio
+- Algunas imágenes que no se encuentran en los **recursos** y Xd no permite descargar esos recursos
+
 La estructura de la **Card** a **Componente** puede ser de esta manera:
 ```json
 Card/
