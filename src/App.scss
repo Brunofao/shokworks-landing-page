@@ -632,15 +632,19 @@ ul {
 }
 
 .speciality-of-us {
-    padding: rem(32) rem(32) rem(80);
+    padding: rem(32) 0 rem(80);
     text-align: center;
 
     &__title {
+        max-width: 16ch;
+        margin: 0 auto rem(65);
         padding: 0 rem(24);
         font-size: rem(28);
+        text-align: center;
         line-height: initial;
 
-        @include breakpoint($md) {
+        @include breakpoint($lg) {
+            font-size: rem(43);
             line-height: rem(55);
         }
 
@@ -648,6 +652,60 @@ ul {
             font-weight: 600;
         }
     }
+
+    &__card {
+        position: relative;
+        max-width: rem(423);
+        height: rem(532);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: rem(32) 0;
+        padding: rem(46);
+        border-radius: rem(8);
+        font-family: "Poppins";
+        font-weight: 400;
+        background: white 0% 0% no-repeat padding-box;
+        box-shadow: 0px 10px 30px #99999933;
+
+        &__image {
+            max-width: rem(255);
+            max-height: rem(255);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        &__title {
+            margin-top: rem(18);
+            font-weight: 400;
+            font-size: rem(28);
+            line-height: rem(28);
+            letter-spacing: 0;
+            text-align: center;
+            color: #222222;
+
+            & > strong {
+                font-weight: 600;
+            }
+        }
+
+        &__subheading {
+            max-width: 30ch;
+            margin-top: rem(19);
+            font-size: rem(15);
+            line-height: rem(27);
+            letter-spacing: 0;
+            color: #555555;
+        }
+    }
+
+    // & .swiper-slide.swiper-slide-prev {
+    //     transform: initial !important;
+    // }
+
+    // & .swiper-slide.swiper-slide-next {
+    //     transform: initial !important;
+    // }
 }
 
 .partnes-and-client {
@@ -671,13 +729,25 @@ ul {
     }
 
     &__title {
+        max-width: 15ch;
+        margin: 0 auto;
         font-weight: 600;
         font-size: rem(28);
         line-height: initial;
+
+        @include breakpoint($lg) {
+            max-width: 13ch;
+            font-size: rem(43);
+            line-height: rem(55);
+        }
     }
 
     &__content {
-        margin-top: rem(141);
+        margin-top: rem(36);
+
+        @include breakpoint($lg) {
+            margin-top: rem(141);
+        }
     }
 
     &__grid {
@@ -712,6 +782,133 @@ ul {
         font-weight: 500;
         color: #185f7f;
         text-decoration: none;
+    }
+}
+
+.testimonial {
+    // padding: rem(32) 0 rem(80);
+    padding: rem(32) rem(32) rem(80);
+    font-family: "Montserrat";
+    font-weight: 400;
+    text-align: center;
+
+    &__title {
+        font-size: rem(28);
+        text-align: center;
+        line-height: initial;
+
+        @include breakpoint($sm) {
+        }
+
+        @include breakpoint($md) {
+        }
+
+        @include breakpoint($lg) {
+            font-size: rem(43);
+            line-height: rem(55);
+        }
+
+        & > strong {
+            font-weight: 600;
+        }
+    }
+
+    &__card {
+        max-width: rem(1613);
+        // height: 603px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: rem(59) auto 0;
+        padding: rem(18) 0 rem(32) 0;
+
+        &__photo {
+            max-width: 189px;
+            height: 192px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        &__comment {
+            max-width: 42ch;
+            margin-top: rem(24);
+            font-size: rem(18);
+            line-height: rem(34);
+            letter-spacing: rem(0.48);
+            color: #333333;
+
+            @include breakpoint($sm) {
+            }
+
+            @include breakpoint($md) {
+            }
+
+            @include breakpoint($lg) {
+                font-size: rem(24);
+            }
+        }
+
+        &__name {
+            margin-top: rem(32);
+            font-weight: 500;
+            font-size: rem(16);
+            line-height: rem(36);
+            letter-spacing: rem(0.38);
+            color: #222222;
+
+            @include breakpoint($md) {
+            }
+
+            @include breakpoint($lg) {
+                font-size: rem(19);
+            }
+        }
+
+        &__rank {
+            margin-top: rem(8);
+            font-size: rem(14);
+            line-height: rem(36);
+            letter-spacing: rem(0.34);
+            color: #222222;
+
+            @include breakpoint($sm) {
+            }
+
+            @include breakpoint($md) {
+            }
+
+            @include breakpoint($lg) {
+                font-size: rem(17);
+            }
+        }
+    }
+}
+
+.contactus {
+    padding: rem(32) rem(32) rem(80);
+    font-family: "Montserrat";
+    background: transparent linear-gradient(1deg, #ffffff 0%, #c9e6ff 100%) 0%
+        0% no-repeat;
+
+    &__title {
+        font-size: rem(28);
+        text-align: center;
+        line-height: initial;
+
+        @include breakpoint($sm) {
+        }
+
+        @include breakpoint($md) {
+        }
+
+        @include breakpoint($lg) {
+            font-size: rem(43);
+            line-height: rem(55);
+        }
+
+        & > strong {
+            font-weight: 600;
+        }
     }
 }
 
@@ -770,5 +967,156 @@ ul {
 
     & > a {
         transition: all 300ms ease-in-out;
+    }
+}
+
+.arrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 10rem;
+    margin: 0 auto;
+
+    &__button {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+        border-radius: 9999px;
+        cursor: pointer;
+        background-color: transparent;
+
+        & > svg {
+            width: rem(18);
+            height: rem(18);
+            color: black;
+        }
+    }
+
+    &--no-shadow {
+        box-shadow: none;
+    }
+}
+
+form {
+    padding: 2em;
+    font-family: "Poppins";
+    font-weight: 400;
+    background-color: white;
+}
+
+.float-label {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: rem(350);
+
+    &:focus-within > label,
+    & > input:is(:placeholder-shown) + label {
+        transform: translate(0, rem(-52)) scale(1);
+    }
+
+    &--select {
+        &:focus-within > label {
+            transform: translate(0, rem(-52)) scale(1);
+        }
+    }
+
+    &--textarea {
+        &:focus-within > label {
+            transform: initial;
+        }
+    }
+
+    &__label {
+        position: absolute;
+        inset: auto 0;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: rem(16);
+        line-height: rem(25);
+        transform: translate(0, 0) scale(1);
+        transform-origin: top left;
+        text-transform: capitalize;
+        color: #222222;
+        pointer-events: none;
+        transition: all 200ms ease-out;
+
+        &--select {
+            transform: translate(0, rem(-52)) scale(1);
+        }
+
+        &--textarea {
+            position: initial;
+            inset: initial;
+            margin-bottom: rem(16);
+            transform: initial;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        height: rem(56);
+        padding: 0 0 0.25rem 0;
+        outline: 0;
+        border: 0;
+        border-bottom: rem(2) solid #e5e5e5;
+        font-size: rem(15);
+        line-height: rem(23);
+        color: #c2c2c2;
+        background-color: transparent;
+        transition: all 0.2s ease-out;
+
+        &::placeholder {
+            color: #c2c2c2;
+            opacity: 1;
+        }
+
+        &:focus::placeholder {
+            opacity: 1;
+            transition: inherit;
+        }
+    }
+
+    &__select {
+        width: 100%;
+        height: rem(56);
+        padding: 0 0 0.25rem 0;
+        outline: 0;
+        border: 0;
+        border-bottom: rem(2) solid #e5e5e5;
+        font-size: rem(15);
+        line-height: rem(23);
+        color: #c2c2c2;
+        appearance: none;
+        background: transparent
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M16.939 7.939 12 12.879l-4.939-4.94-2.122 2.122L12 17.121l7.061-7.06z"></path></svg>')
+            no-repeat;
+        background-position: right top 50%;
+        background-size: 1rem;
+        background-color: transparent;
+        transition: all 0.2s ease-out;
+    }
+
+    &__textarea {
+        width: 100%;
+        padding: 0 0 0.25rem 0;
+        outline: 0;
+        border: 0;
+        border-bottom: rem(2) solid #e5e5e5;
+        font-size: rem(15);
+        line-height: rem(23);
+        color: #c2c2c2;
+        background-color: transparent;
+        resize: none;
+        transition: all 0.2s ease-out;
+
+        &::placeholder {
+            color: #c2c2c2;
+        }
     }
 }

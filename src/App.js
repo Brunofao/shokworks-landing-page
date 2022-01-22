@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, EffectCoverflow } from "swiper";
 import logo from "./assets/images/logo.svg";
 import community from "./assets/images/community.png";
 import whatCanYouBuild from "./assets/images/what-can-you-build.png";
 import hereToAlwaysHelpYou from "./assets/images/here-to-always-help-you.png";
-// Logos
 import immersityLogo from "./assets/images/immersity-logo.png";
 import wifipassLogo from "./assets/images/wifipass-logo.png";
 import kinesisLogo from "./assets/images/kinesis-logo.png";
 import mexperienciaLogo from "./assets/images/mexperiencia-logo.png";
 import mobileLogo from "./assets/images/mobile-logo.png";
 import goodtimesLogo from "./assets/images/goodtimes-logo.png";
-// CSS
+import "swiper/scss";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
+import "swiper/scss/scrollbar";
 import "./App.scss";
 
 const MobileNavbar = () => {
@@ -64,9 +68,19 @@ const MobileNavbar = () => {
     );
 };
 
+const SwiperFooter = ({ children }) => children;
+
 const App = () => {
     const [mobileMenu, setMobileMenu] = useState(false);
+    const [swiper, setSwiper] = useState(null);
+    const [swiperTwo, setSwiperTwo] = useState(null);
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
     const handleMobileMenu = () => setMobileMenu(!mobileMenu);
+
+    useEffect(() => {
+        if (swiper) swiper.slideTo(3);
+    }, [swiper]);
 
     return (
         <>
@@ -317,7 +331,146 @@ const App = () => {
                         What is the <strong>Speciality Of Us?</strong>
                     </h2>
 
-                    <p>Carrousel here!</p>
+                    <div>
+                        <Swiper
+                            modules={[
+                                Navigation,
+                                Pagination,
+                                A11y,
+                                EffectCoverflow,
+                            ]}
+                            effect="coverflow"
+                            grabCursor
+                            centeredSlides
+                            spaceBetween={0}
+                            watchSlidesProgress
+                            slidesPerView={3}
+                            pagination={{ clickable: true }}
+                            coverflowEffect={{
+                                rotate: 0,
+                                stretch: 0,
+                                depth: 90,
+                                modifier: 1,
+                                slideShadows: false,
+                            }}
+                            onSwiper={(swiper) => setSwiper(swiper)}
+                            onSlideChange={() => console.log("slide change")}
+                        >
+                            <SwiperSlide>
+                                <div className="speciality-of-us__card">
+                                    <img
+                                        src="https://picsum.photos/255/255"
+                                        alt="Lorem picsum"
+                                        className="speciality-of-us__card__image"
+                                    />
+
+                                    <h3 className="speciality-of-us__card__title">
+                                        Great <strong>Communication</strong>
+                                    </h3>
+
+                                    <p className="speciality-of-us__card__subheading">
+                                        We maintain 24/7 communication to cover
+                                        all your need for the project
+                                    </p>
+                                </div>
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <div className="speciality-of-us__card">
+                                    <img
+                                        src="https://picsum.photos/255/255"
+                                        alt="Lorem picsum"
+                                        className="speciality-of-us__card__image"
+                                    />
+
+                                    <h3 className="speciality-of-us__card__title">
+                                        Great <strong>Communication</strong>
+                                    </h3>
+
+                                    <p className="speciality-of-us__card__subheading">
+                                        We maintain 24/7 communication to cover
+                                        all your need for the project
+                                    </p>
+                                </div>
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <div className="speciality-of-us__card">
+                                    <img
+                                        src="https://picsum.photos/255/255"
+                                        alt="Lorem picsum"
+                                        className="speciality-of-us__card__image"
+                                    />
+
+                                    <h3 className="speciality-of-us__card__title">
+                                        Great <strong>Communication</strong>
+                                    </h3>
+
+                                    <p className="speciality-of-us__card__subheading">
+                                        We maintain 24/7 communication to cover
+                                        all your need for the project
+                                    </p>
+                                </div>
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <div className="speciality-of-us__card">
+                                    <img
+                                        src="https://picsum.photos/255/255"
+                                        alt="Lorem picsum"
+                                        className="speciality-of-us__card__image"
+                                    />
+
+                                    <h3 className="speciality-of-us__card__title">
+                                        Great <strong>Communication</strong>
+                                    </h3>
+
+                                    <p className="speciality-of-us__card__subheading">
+                                        We maintain 24/7 communication to cover
+                                        all your need for the project
+                                    </p>
+                                </div>
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <div className="speciality-of-us__card">
+                                    <img
+                                        src="https://picsum.photos/255/255"
+                                        alt="Lorem picsum"
+                                        className="speciality-of-us__card__image"
+                                    />
+
+                                    <h3 className="speciality-of-us__card__title">
+                                        Great <strong>Communication</strong>
+                                    </h3>
+
+                                    <p className="speciality-of-us__card__subheading">
+                                        We maintain 24/7 communication to cover
+                                        all your need for the project
+                                    </p>
+                                </div>
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <div className="speciality-of-us__card">
+                                    <img
+                                        src="https://picsum.photos/255/255"
+                                        alt="Lorem picsum"
+                                        className="speciality-of-us__card__image"
+                                    />
+
+                                    <h3 className="speciality-of-us__card__title">
+                                        Great <strong>Communication</strong>
+                                    </h3>
+
+                                    <p className="speciality-of-us__card__subheading">
+                                        We maintain 24/7 communication to cover
+                                        all your need for the project
+                                    </p>
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
                 </section>
 
                 <section className="partnes-and-client">
@@ -429,11 +582,227 @@ const App = () => {
                 </section>
 
                 <section className="testimonial">
-                    <h2 class="testimonial__title">What Our Client Says?</h2>
+                    <h2 className="testimonial__title">
+                        What Our <strong>Client Says?</strong>
+                    </h2>
+
+                    <Swiper
+                        modules={[
+                            Navigation,
+                            Pagination,
+                            A11y,
+                            EffectCoverflow,
+                        ]}
+                        centeredSlides
+                        spaceBetween={0}
+                        slidesPerView={1}
+                        onInit={(swiper) => {
+                            swiper.params.navigation.prevEl = prevRef.current;
+                            swiper.params.navigation.nextEl = nextRef.current;
+                            swiper.navigation.init();
+                            swiper.navigation.update();
+                        }}
+                        onSwiper={(swiper) => setSwiperTwo(swiper)}
+                        onSlideChange={() => console.log("slide change")}
+                    >
+                        <SwiperSlide>
+                            <div className="testimonial__card">
+                                <img
+                                    src="https://picsum.photos/255/255"
+                                    alt="Lorem picsum"
+                                    className="testimonial__card__photo"
+                                />
+
+                                <div className="testimonial__card__comment">
+                                    Shokworks are dedicated and they
+                                    accomplished all my ideas and thoughts for
+                                    my project, excellent guidance.
+                                </div>
+
+                                <div className="testimonial__card__name">
+                                    Rubiya Mond De-Patrica
+                                </div>
+
+                                <div className="testimonial__card__rank">
+                                    CEO, Zexbay-Fine
+                                </div>
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className="testimonial__card">
+                                <img
+                                    src="https://picsum.photos/255/255"
+                                    alt="Lorem picsum"
+                                    className="testimonial__card__photo"
+                                />
+
+                                <div className="testimonial__card__comment">
+                                    Shokworks are dedicated and they
+                                    accomplished all my ideas and thoughts for
+                                    my project, excellent guidance.
+                                </div>
+
+                                <div className="testimonial__card__name">
+                                    Rubiya Mond De-Patrica
+                                </div>
+
+                                <div className="testimonial__card__rank">
+                                    CEO, Zexbay-Fine
+                                </div>
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperFooter>
+                            <div className="arrow">
+                                <button
+                                    ref={prevRef}
+                                    className="arrow__button arrow--no-shadow"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 17.754 17.754"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M19.047,10.6H3.6l7.419,7.419-.853.853L1.293,10,10.17,1.118l.853.853L3.6,9.392H19.047Z"
+                                            transform="translate(-1.293 -1.118)"
+                                        />
+                                    </svg>
+                                </button>
+
+                                <button
+                                    ref={nextRef}
+                                    className="arrow__button arrow--no-shadow"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 17.754 17.755"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M18.754,10,9.876,18.873l-.853-.853L16.442,10.6H1V9.393H16.443L9.023,1.971l.853-.853L18.754,10Z"
+                                            transform="translate(-1 -1.118)"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </SwiperFooter>
+                    </Swiper>
                 </section>
 
                 <section className="contactus">
-                    <h2>Facing Problem? Lets Get In Touch Now</h2>
+                    <h2 className="contactus__title">
+                        Facing Problem?
+                        <strong> Lets Get In Touch Now</strong>
+                    </h2>
+
+                    <div className="contactus__form">
+                        <form method="POST">
+                            <div
+                                className="float-label"
+                                style={{ marginBottom: "2rem" }}
+                            >
+                                <input
+                                    type="text"
+                                    name="firstname"
+                                    id="firstname"
+                                    placeholder="Bruno"
+                                    className="float-label__input"
+                                />
+
+                                <label
+                                    htmlFor="firstname"
+                                    className="float-label__label"
+                                >
+                                    First name
+                                </label>
+                            </div>
+
+                            <div
+                                className="float-label"
+                                style={{ marginBottom: "2rem" }}
+                            >
+                                <input
+                                    type="text"
+                                    name="lastname"
+                                    id="lastname"
+                                    placeholder="Bruno"
+                                    className="float-label__input"
+                                />
+
+                                <label
+                                    htmlFor="lastname"
+                                    className="float-label__label"
+                                >
+                                    Last name
+                                </label>
+                            </div>
+
+                            <div
+                                className="float-label"
+                                style={{ marginBottom: "2rem" }}
+                            >
+                                <input
+                                    type="text"
+                                    name="email"
+                                    id="email"
+                                    placeholder="brunfao@gmail.com"
+                                    className="float-label__input"
+                                />
+
+                                <label
+                                    htmlFor="email"
+                                    className="float-label__label"
+                                >
+                                    Your email address
+                                </label>
+                            </div>
+
+                            <div
+                                className="float-label float-label--select"
+                                style={{ marginBottom: "4rem" }}
+                            >
+                                <select
+                                    name="selected-opt"
+                                    id="selected-opt"
+                                    className="float-label__select"
+                                >
+                                    <option value="" selected>
+                                        Select One
+                                    </option>
+                                </select>
+
+                                <label
+                                    htmlFor="selected-opt"
+                                    className="float-label__label float-label__label--select"
+                                >
+                                    Which related problem you are facing?
+                                </label>
+                            </div>
+
+                            <div
+                                className="float-label float-label--textarea"
+                                style={{ marginBottom: "4rem" }}
+                            >
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    cols="20"
+                                    rows="5"
+                                    placeholder="Here goes your message"
+                                    className="float-label__textarea"
+                                ></textarea>
+
+                                <label
+                                    htmlFor="message"
+                                    className="float-label__label float-label__label--textarea"
+                                >
+                                    Type your message
+                                </label>
+                            </div>
+                        </form>
+                    </div>
                 </section>
             </main>
 
