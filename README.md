@@ -10,6 +10,21 @@
 - Mejorar el nombramiento de clases (se usó BEM pero puede hacerse mejor)
 - Mejorar la semántica de HTML, ejemplo: las cards pueden ser un article
 
+La estructura de la **Card** a **Componente** puede ser de esta manera:
+```json
+Card/
+	index.js
+	Card.js
+	Card.module.scss
+	CardHeader.js
+	CardHeader.module.scss
+	CardBody.js
+	CardBody.module.scss
+	CardFooter.js
+	Card.module.scss
+/
+```
+
 ------------
 **Bruno Faoro** - brunfao@gmail.com
 
