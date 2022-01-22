@@ -889,8 +889,19 @@ ul {
     font-family: "Montserrat";
     background: transparent linear-gradient(1deg, #ffffff 0%, #c9e6ff 100%) 0%
         0% no-repeat;
+    overflow: hidden;
+
+    @include breakpoint($sm) {
+        padding: rem(75) rem(32);
+    }
+
+    @include breakpoint($xl) {
+        padding: rem(75) rem(34);
+    }
 
     &__title {
+        max-width: 16.5ch;
+        margin: 0 auto;
         font-size: rem(28);
         text-align: center;
         line-height: initial;
@@ -908,6 +919,48 @@ ul {
 
         & > strong {
             font-weight: 600;
+        }
+    }
+
+    &__form {
+        position: relative;
+        margin-top: rem(32);
+        z-index: 1;
+
+        @include breakpoint($xl) {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        & > form {
+            flex-grow: 1;
+        }
+    }
+
+    &__btn {
+        margin-top: rem(32);
+    }
+
+    &__banner {
+        flex: 1;
+        height: 100%;
+        margin-top: auto;
+        padding-bottom: rem(16);
+
+        & > img {
+            display: none;
+            max-width: rem(566);
+            max-height: rem(492);
+
+            @include breakpoint($lg) {
+                display: block;
+                // position: absolute;
+                // right: rem(-284.8);
+                // bottom: rem(33.6);
+                // margin: auto 0;
+                // z-index: -1;
+            }
         }
     }
 }
@@ -1001,29 +1054,58 @@ ul {
     }
 }
 
-form {
-    padding: 2em;
+.form {
+    max-width: rem(929);
+    margin: 0 auto;
+    padding: rem(52) rem(32) rem(32);
     font-family: "Poppins";
     font-weight: 400;
+    border-radius: rem(8);
     background-color: white;
+    box-shadow: 0 rem(20) rem(60) #3e3e3e29;
+
+    @include breakpoint($sm) {
+        padding: rem(88) rem(64) rem(64);
+    }
+
+    @include breakpoint($xl) {
+        // margin: 0 auto 0 0;
+        // margin: initial;
+    }
+
+    &__grid {
+        display: grid;
+        grid-gap: rem(71.12);
+
+        @include breakpoint($sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        & > &--full {
+            @include breakpoint($sm) {
+                grid-column: 1 / -1;
+            }
+        }
+    }
 }
 
 .float-label {
     position: relative;
     display: flex;
     flex-direction: column-reverse;
-    max-width: rem(350);
+    // max-width: rem(350);
 
     &:focus-within > label,
-    & > input:is(:placeholder-shown) + label {
+    & > input:is(:placeholder-shown) + label,
+    & > input:not(:placeholder-shown) + label {
         transform: translate(0, rem(-52)) scale(1);
     }
 
-    &--select {
-        &:focus-within > label {
-            transform: translate(0, rem(-52)) scale(1);
-        }
-    }
+    // &--select {
+    //     &:focus-within > label {
+    //         transform: translate(0, rem(-52)) scale(1);
+    //     }
+    // }
 
     &--textarea {
         &:focus-within > label {
@@ -1033,13 +1115,12 @@ form {
 
     &__label {
         position: absolute;
-        inset: auto 0;
         display: flex;
         align-items: center;
         font-weight: 600;
         font-size: rem(16);
         line-height: rem(25);
-        transform: translate(0, 0) scale(1);
+        transform: translate(0, rem(-20)) scale(1);
         transform-origin: top left;
         text-transform: capitalize;
         color: #222222;
@@ -1061,7 +1142,7 @@ form {
     &__input {
         width: 100%;
         height: rem(56);
-        padding: 0 0 0.25rem 0;
+        padding: 0;
         outline: 0;
         border: 0;
         border-bottom: rem(2) solid #e5e5e5;
@@ -1085,7 +1166,7 @@ form {
     &__select {
         width: 100%;
         height: rem(56);
-        padding: 0 0 0.25rem 0;
+        padding: 0;
         outline: 0;
         border: 0;
         border-bottom: rem(2) solid #e5e5e5;
@@ -1104,7 +1185,7 @@ form {
 
     &__textarea {
         width: 100%;
-        padding: 0 0 0.25rem 0;
+        padding: 0;
         outline: 0;
         border: 0;
         border-bottom: rem(2) solid #e5e5e5;
@@ -1118,5 +1199,76 @@ form {
         &::placeholder {
             color: #c2c2c2;
         }
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: rem(120.92) 0;
+    font-family: "Poppins";
+    font-weight: 400;
+
+    &__nav {
+        display: grid;
+        // grid-gap: rem(80);
+        grid-gap: rem(16);
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: rem(94.99);
+        max-width: 66rem;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+    }
+
+    &__heading {
+        font-weight: 500;
+        font-size: rem(18);
+        line-height: rem(27);
+        text-transform: capitalize;
+        color: #101c21;
+    }
+
+    &__list {
+        margin-top: rem(28);
+        font-size: rem(15);
+        color: #777777;
+
+        &--row {
+            display: flex;
+            flex-direction: row;
+            gap: rem(24);
+        }
+    }
+
+    &__item {
+        margin-bottom: rem(21);
+
+        &--icon {
+            display: flex;
+            gap: rem(8);
+            flex-direction: row;
+            align-items: center;
+
+            & > svg {
+                color: #9d60eb;
+            }
+        }
+    }
+
+    &__link {
+        color: #777777;
+        text-decoration: none;
+    }
+
+    &__address {
+        margin-top: rem(28);
+        margin-bottom: rem(21);
+        font-size: rem(13);
+        font-style: normal;
+        line-height: rem(23);
+        color: #777777;
     }
 }

@@ -11,6 +11,11 @@ import kinesisLogo from "./assets/images/kinesis-logo.png";
 import mexperienciaLogo from "./assets/images/mexperiencia-logo.png";
 import mobileLogo from "./assets/images/mobile-logo.png";
 import goodtimesLogo from "./assets/images/goodtimes-logo.png";
+import contactUsBanner from "./assets/images/contact-us-banner.png";
+import facebookIcon from "./assets/images/facebook-icon.png";
+import skypeIcon from "./assets/images/skype-icon.png";
+import linkedinIcon from "./assets/images/linkedin-icon.png";
+import instagramIcon from "./assets/images/instagram-icon.png";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/pagination";
@@ -699,114 +704,281 @@ const App = () => {
 
                     <div className="contactus__form">
                         <form method="POST">
-                            <div
-                                className="float-label"
-                                style={{ marginBottom: "2rem" }}
-                            >
-                                <input
-                                    type="text"
-                                    name="firstname"
-                                    id="firstname"
-                                    placeholder="Bruno"
-                                    className="float-label__input"
-                                />
+                            <div className="form">
+                                <div className="form__grid">
+                                    <div className="float-label">
+                                        <input
+                                            type="text"
+                                            name="firstname"
+                                            id="firstname"
+                                            placeholder="Bruno"
+                                            className="float-label__input"
+                                        />
 
-                                <label
-                                    htmlFor="firstname"
-                                    className="float-label__label"
-                                >
-                                    First name
-                                </label>
-                            </div>
+                                        <label
+                                            htmlFor="firstname"
+                                            className="float-label__label"
+                                        >
+                                            First name
+                                        </label>
+                                    </div>
 
-                            <div
-                                className="float-label"
-                                style={{ marginBottom: "2rem" }}
-                            >
-                                <input
-                                    type="text"
-                                    name="lastname"
-                                    id="lastname"
-                                    placeholder="Bruno"
-                                    className="float-label__input"
-                                />
+                                    <div className="float-label">
+                                        <input
+                                            type="text"
+                                            name="lastname"
+                                            id="lastname"
+                                            placeholder="Bruno"
+                                            className="float-label__input"
+                                        />
 
-                                <label
-                                    htmlFor="lastname"
-                                    className="float-label__label"
-                                >
-                                    Last name
-                                </label>
-                            </div>
+                                        <label
+                                            htmlFor="lastname"
+                                            className="float-label__label"
+                                        >
+                                            Last name
+                                        </label>
+                                    </div>
 
-                            <div
-                                className="float-label"
-                                style={{ marginBottom: "2rem" }}
-                            >
-                                <input
-                                    type="text"
-                                    name="email"
-                                    id="email"
-                                    placeholder="brunfao@gmail.com"
-                                    className="float-label__input"
-                                />
+                                    <div className="form__grid--full float-label">
+                                        <input
+                                            type="text"
+                                            name="email"
+                                            id="email"
+                                            placeholder="brunfao@gmail.com"
+                                            className="float-label__input"
+                                        />
 
-                                <label
-                                    htmlFor="email"
-                                    className="float-label__label"
-                                >
-                                    Your email address
-                                </label>
-                            </div>
+                                        <label
+                                            htmlFor="email"
+                                            className="float-label__label"
+                                        >
+                                            Your email address
+                                        </label>
+                                    </div>
 
-                            <div
-                                className="float-label float-label--select"
-                                style={{ marginBottom: "4rem" }}
-                            >
-                                <select
-                                    name="selected-opt"
-                                    id="selected-opt"
-                                    className="float-label__select"
-                                >
-                                    <option value="" selected>
-                                        Select One
-                                    </option>
-                                </select>
+                                    <div className="form__grid--full float-label float-label--select">
+                                        <select
+                                            name="selected-opt"
+                                            id="selected-opt"
+                                            className="float-label__select"
+                                        >
+                                            <option value="" selected>
+                                                Select One
+                                            </option>
+                                        </select>
 
-                                <label
-                                    htmlFor="selected-opt"
-                                    className="float-label__label float-label__label--select"
-                                >
-                                    Which related problem you are facing?
-                                </label>
-                            </div>
+                                        <label
+                                            htmlFor="selected-opt"
+                                            className="float-label__label float-label__label--select"
+                                        >
+                                            Which related problem you are
+                                            facing?
+                                        </label>
+                                    </div>
 
-                            <div
-                                className="float-label float-label--textarea"
-                                style={{ marginBottom: "4rem" }}
-                            >
-                                <textarea
-                                    name="message"
-                                    id="message"
-                                    cols="20"
-                                    rows="5"
-                                    placeholder="Here goes your message"
-                                    className="float-label__textarea"
-                                ></textarea>
+                                    <div className="form__grid--full float-label float-label--textarea">
+                                        <textarea
+                                            name="message"
+                                            id="message"
+                                            cols="20"
+                                            rows="5"
+                                            placeholder="Here goes your message"
+                                            className="float-label__textarea"
+                                        ></textarea>
 
-                                <label
-                                    htmlFor="message"
-                                    className="float-label__label float-label__label--textarea"
-                                >
-                                    Type your message
-                                </label>
+                                        <label
+                                            htmlFor="message"
+                                            className="float-label__label float-label__label--textarea"
+                                        >
+                                            Type your message
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <a
+                                        href="#"
+                                        className="brand__knowmore contactus__btn"
+                                    >
+                                        Our Works
+                                    </a>
+                                </div>
                             </div>
                         </form>
+
+                        <div className="contactus__banner">
+                            <img
+                                src={contactUsBanner}
+                                alt="Contact us banner"
+                            />
+                        </div>
                     </div>
                 </section>
             </main>
 
-            <footer></footer>
+            <footer className="footer">
+                <img src={logo} alt="Shokworks logo" />
+
+                <nav className="footer__nav">
+                    <div>
+                        <span className="footer__heading">Contact us</span>
+
+                        <ul className="footer__list">
+                            <li className="footer__item footer__item--icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="m20.487 17.14-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.085-1.39z"></path>
+                                </svg>
+
+                                <span>+(1) 824-5428</span>
+                            </li>
+                            <li className="footer__item footer__item--icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
+                                </svg>
+
+                                <span>Miami, United States</span>
+                            </li>
+                            <li className="footer__item footer__item--icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
+                                </svg>
+
+                                <span>yfuentes@shokworks.io</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <span className="footer__heading">Our company</span>
+
+                        <ul className="footer__list">
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    About
+                                </a>
+                            </li>
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    Product
+                                </a>
+                            </li>
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    Career
+                                </a>
+                            </li>
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <span className="footer__heading">Social contacts</span>
+
+                        <ul className="footer__list">
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    Facebook
+                                </a>
+                            </li>
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    LinkedIn
+                                </a>
+                            </li>
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    Youtube
+                                </a>
+                            </li>
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    Vimeo
+                                </a>
+                            </li>
+                            <li className="footer__item">
+                                <a href="#" className="footer__link">
+                                    Skype
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span className="footer__heading">Address</span>
+
+                            <address className="footer__address">
+                                Internet Systems Consortium, Inc. 950 Charter
+                                Street Redwood City, CA USA.
+                            </address>
+                        </div>
+
+                        <div>
+                            <span className="footer__heading">Follow us</span>
+
+                            <ul className="footer__list footer__list--row">
+                                <li className="footer__item">
+                                    <a href="#" className="footer__link">
+                                        <img
+                                            src={facebookIcon}
+                                            alt="Facebook"
+                                        />
+                                    </a>
+                                </li>
+                                <li className="footer__item">
+                                    <a href="#" className="footer__link">
+                                        <img src={skypeIcon} alt="Skype" />
+                                    </a>
+                                </li>
+                                <li className="footer__item">
+                                    <a href="#" className="footer__link">
+                                        <img
+                                            src={linkedinIcon}
+                                            alt="LinkedIn"
+                                        />
+                                    </a>
+                                </li>
+                                <li className="footer__item">
+                                    <a href="#" className="footer__link">
+                                        <img
+                                            src={instagramIcon}
+                                            alt="Instagram"
+                                        />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </footer>
         </>
     );
 };
