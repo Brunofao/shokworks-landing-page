@@ -953,7 +953,7 @@ ul {
             max-width: rem(566);
             max-height: rem(492);
 
-            @include breakpoint($lg) {
+            @include breakpoint($xl) {
                 display: block;
                 // position: absolute;
                 // right: rem(-284.8);
@@ -1207,20 +1207,42 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: rem(120.92) 0;
+    padding: rem(120.92) rem(32) rem(120.92);
     font-family: "Poppins";
     font-weight: 400;
+
+    @include breakpoint($xxl) {
+        padding: rem(120.92) 0;
+    }
+
+    &__logo {
+        max-width: rem(484);
+        width: 100%;
+        height: rem(41);
+    }
 
     &__nav {
         display: grid;
         // grid-gap: rem(80);
         grid-gap: rem(16);
-        grid-template-columns: repeat(4, 1fr);
+        // grid-template-columns: repeat(4, 1fr);
         margin-top: rem(94.99);
         max-width: 66rem;
         margin-right: auto;
         margin-left: auto;
         width: 100%;
+
+        @include breakpoint($md) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include breakpoint($lg) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @include breakpoint($xxl) {
+            max-width: rem(1339.2);
+        }
     }
 
     &__heading {

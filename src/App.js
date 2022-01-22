@@ -818,7 +818,7 @@ const App = () => {
             </main>
 
             <footer className="footer">
-                <img src={logo} alt="Shokworks logo" />
+                <img src={logo} alt="Shokworks logo" className="footer__logo" />
 
                 <nav className="footer__nav">
                     <div>
